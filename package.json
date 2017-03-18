@@ -1,0 +1,33 @@
+{
+  "name": "typescript-database-abstraction",
+  "version": "0.0.1",
+  "author": "Markus Oberlehner",
+  "homepage": "https://github.com/avalanchesass/typescript-database-abstraction",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avalanchesass/typescript-database-abstraction"
+  },
+  "bugs": {
+    "url": "https://github.com/avalanchesass/typescript-database-abstraction/issues"
+  },
+  "devDependencies": {
+    "@types/glob": "^5.0.30",
+    "@types/js-yaml": "^3.5.29",
+    "@types/node": "^7.0.8",
+    "@types/sinon": "^1.16.35",
+    "ava": "^0.18.2",
+    "glob": "^7.1.1",
+    "js-yaml": "^3.8.2",
+    "sinon": "^2.0.0",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
+  },
+  "scripts": {
+    "start": "yarn run clean-app && tsc -w",
+    "build-app": "yarn run clean-app && tsc",
+    "clean-app": "rm -Rf app",
+    "lint": "tslint 'src/**/*.ts'",
+    "test": "yarn run build-app && ava app/**/*.spec.js"
+  }
+}
