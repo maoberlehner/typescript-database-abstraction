@@ -3,18 +3,10 @@ This is an example repository created for the following blog article: [Building 
 
 ## Getting started
 - `yarn start` Runs the TypeScript compiler in watch mode.
-
-## Build
-- `yarn run build-app`
-
-## Run the demo code
-- `node app/index.js`
-
-## Lint
-- `yarn run lint`
-
-## Test
-- `yarn test`
+- `yarn run build-app` Run the TypeScript compiler once.
+- `node app/index.js` Run the demo code.
+- `yarn run lint` Lint all the TypeScript files.
+- `yarn test` Run all tests.
 
 ## About
 ### Author
