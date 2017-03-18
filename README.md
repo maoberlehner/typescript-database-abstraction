@@ -1,5 +1,5 @@
 # typescript-database-abstraction
-This is an example repository created for the following blog article: <LINK>.
+This is an example repository created for the following blog article: [Building a simple (but overengineered) database abstraction with TypeScript](https://markus.oberlehner.net/blog/2017/03/building-a-simple-database-abstraction-with-typescript/).
 
 ## Getting started
 - `yarn start` Runs the TypeScript compiler in watch mode.
