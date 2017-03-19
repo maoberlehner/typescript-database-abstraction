@@ -47,11 +47,11 @@ test('should load file from the file system and extract data', (t) => {
   const extractor = sinon.stub().returns({ extractData });
   const cwd = `/some/cwd`;
   const table = `some-table`;
-  const id = `some-id`;
+  const id = `some-id.json`;
   const driver = new FileDriver(glob, path, fs, extractor, cwd);
 
   driver.getById(id, table);
 
-  t.true(fs.readFileSync.calledWith(`${cwd}/resources/${table}/${id}.md`));
+  t.true(fs.readFileSync.calledWith(`${cwd}/resources/${table}/${id}`));
   t.true(extractor.calledWith(`fake-content`));
 });
