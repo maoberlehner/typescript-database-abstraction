@@ -2,8 +2,7 @@ import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
 
-import IDatabase from '../interfaces/IDatabase';
-
+import { IDatabase } from '../interfaces/IDatabase';
 import { IExtractor } from '../interfaces/IExtractor';
 
 type fs = typeof fs;

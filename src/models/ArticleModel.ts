@@ -1,6 +1,6 @@
 import { IContent } from '../interfaces/IContent';
-import IDatabase from '../interfaces/IDatabase';
-import IModel from '../interfaces/IModel';
+import { IDatabase } from '../interfaces/IDatabase';
+import { IModel } from '../interfaces/IModel';
 
 export interface IArticle extends IContent {
   description?: string;

@@ -1,7 +1,5 @@
-import IDatabase from './IDatabase';
+import { IDatabase } from './IDatabase';
 
-interface IModel extends IDatabase {
+export interface IModel extends IDatabase {
   table: string;
 }
-
-export default IModel;

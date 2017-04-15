@@ -1,4 +1,4 @@
-import IDatabase from '../interfaces/IDatabase';
+import { IDatabase } from '../interfaces/IDatabase';
 
 export class Database implements IDatabase {
   private driver: IDatabase;
