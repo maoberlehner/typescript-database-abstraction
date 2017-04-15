@@ -2,7 +2,7 @@ import IDatabase from '../interfaces/IDatabase';
 import IModel from '../interfaces/IModel';
 
 export class Article implements IModel {
-  public table: string = `articles`;
+  public table = `articles`;
   private db: IDatabase;
 
   constructor(db: IDatabase) {
@@ -13,11 +13,11 @@ export class Article implements IModel {
     return this.db.getAll(this.table);
   }
 
-  public getById(id: any) {
+  public getById(id: string|number) {
     return this.db.getById(id, this.table);
   }
 }
 
-export default function articleFactory(db: IDatabase): Article {
+export default function articleFactory(db: IDatabase) {
   return new Article(db);
 }

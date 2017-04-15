@@ -44,27 +44,28 @@ export class FileDriver implements IDatabase {
     this.cwd = cwd;
   }
 
-  public getAll(table: string): Array<object> {
+  public getAll(table: string) {
     const globPattern = path.resolve(this.cwd, `resources/${table}/*`);
+
     return this.glob.sync(globPattern)
       .map((file) => {
-        const fileContent: string = this.readFile(file);
+        const fileContent = this.readFile(file);
         return this.extractData(fileContent);
       });
   }
 
-  public getById(id: string, table: string): object {
+  public getById(id: string, table: string) {
     const file = this.path.resolve(this.cwd, `resources/${table}/${id}`);
-    const fileContent: string = this.readFile(file);
+    const fileContent = this.readFile(file);
 
     return this.extractData(fileContent);
   }
 
-  private readFile(file: string): string {
+  private readFile(file: string) {
     return this.fs.readFileSync(file, `utf8`);
   }
 
-  private extractData(fileContent: string): object {
+  private extractData(fileContent: string) {
     return this.extractor(fileContent).extractData();
   }
 }
