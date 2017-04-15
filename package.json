@@ -24,10 +24,10 @@
     "typescript": "^2.2.2"
   },
   "scripts": {
-    "start": "yarn run clean-app && tsc -w",
-    "build-app": "yarn run clean-app && tsc",
-    "clean-app": "rm -Rf app",
+    "start": "yarn run clean && tsc -w",
+    "build": "yarn run clean && tsc",
+    "clean": "rm -Rf app",
     "lint": "tslint 'src/**/*.ts'",
-    "test": "yarn run build-app && ava app/**/*.spec.js"
+    "test": "yarn run build && ava app/**/*.spec.js"
   }
 }
