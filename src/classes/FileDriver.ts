@@ -3,33 +3,43 @@ import * as glob from 'glob';
 import * as path from 'path';
 
 import IDatabase from '../interfaces/IDatabase';
-import IExtractor from '../interfaces/IExtractor';
+
+import { IExtractor } from '../interfaces/IExtractor';
+
+type fs = typeof fs;
+type glob = typeof glob;
+type path = typeof path;
+type extractorFactory = (fileContent: string) => IExtractor;
+
+export interface IDependencies {
+  fs: fs;
+  glob: glob;
+  path: path;
+}
 
 export class FileDriver implements IDatabase {
-  private glob: any;
-  private path: any;
-  private fs: any;
-  private extractor: (fileContent: string) => IExtractor;
+  private fs: fs;
+  private glob: glob;
+  private path: path;
+  private extractor: extractorFactory;
   private cwd: string;
 
   /**
    * FileDriver
+   * @param fs
    * @param glob
    * @param path
-   * @param fs
    * @param extractor
    * @param cwd
    */
   constructor(
-    glob,
-    path,
-    fs,
-    extractor,
+    { fs, glob, path }: IDependencies,
+    extractor: extractorFactory,
     cwd: string,
   ) {
+    this.fs = fs;
     this.glob = glob;
     this.path = path;
-    this.fs = fs;
     this.extractor = extractor;
     this.cwd = cwd;
   }
@@ -65,13 +75,11 @@ export class FileDriver implements IDatabase {
  * @param cwd
  */
 export default function fileDriverFactory(
-  extractor,
+  extractor: extractorFactory,
   cwd: string,
-): FileDriver {
+) {
   return new FileDriver(
-    glob,
-    path,
-    fs,
+    { fs, glob, path },
     extractor,
     cwd,
   );

@@ -14,14 +14,14 @@
   "devDependencies": {
     "@types/glob": "^5.0.30",
     "@types/js-yaml": "^3.5.29",
-    "@types/node": "^7.0.8",
-    "@types/sinon": "^1.16.35",
-    "ava": "^0.18.2",
+    "@types/node": "^7.0.12",
+    "@types/sinon": "^2.1.2",
+    "ava": "^0.19.0",
     "glob": "^7.1.1",
     "js-yaml": "^3.8.2",
-    "sinon": "^2.0.0",
-    "tslint": "^4.5.1",
-    "typescript": "^2.2.1"
+    "sinon": "^2.1.0",
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2"
   },
   "scripts": {
     "start": "yarn run clean-app && tsc -w",

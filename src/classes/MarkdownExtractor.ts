@@ -1,9 +1,15 @@
 import * as yaml from 'js-yaml';
 
-import IExtractor from '../interfaces/IExtractor';
+import { IExtractor } from '../interfaces/IExtractor';
+
+type yaml = typeof yaml;
+
+export interface IDependencies {
+  yaml: yaml;
+}
 
 export class MarkdownExtractor implements IExtractor {
-  private yaml: any;
+  private yaml: yaml;
   private fileContent: string;
   private headerRegex: RegExp;
 
@@ -12,7 +18,7 @@ export class MarkdownExtractor implements IExtractor {
    * @param yaml
    * @param fileContent
    */
-  constructor(yaml, fileContent: string) {
+  constructor({ yaml }: IDependencies, fileContent: string) {
     this.yaml = yaml;
     this.fileContent = fileContent;
     this.headerRegex = /^---([\s\S]*?)---/i;
@@ -25,14 +31,18 @@ export class MarkdownExtractor implements IExtractor {
     return Object.assign(headerData, { content });
   }
 
-  public extractHeader(): object {
-    const header: string = this.fileContent.match(this.headerRegex)[1].trim();
+  public extractHeader() {
+    const header = this.matchHeader()[1].trim();
 
     return this.yaml.safeLoad(header);
   }
 
-  public extractContent(): string {
+  public extractContent() {
     return this.fileContent.replace(this.headerRegex, ``).trim();
+  }
+
+  private matchHeader() {
+    return this.fileContent.match(this.headerRegex) || [``];
   }
 }
 
@@ -40,6 +50,6 @@ export class MarkdownExtractor implements IExtractor {
  * markdownExtractorFactory
  * @param fileContent
  */
-export default function markdownExtractorFactory(fileContent: string): MarkdownExtractor {
-  return new MarkdownExtractor(yaml, fileContent);
+export default function markdownExtractorFactory(fileContent: string) {
+  return new MarkdownExtractor({ yaml }, fileContent);
 }
