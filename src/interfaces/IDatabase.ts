@@ -1,6 +1,8 @@
+import { IContent } from './IContent';
+
 interface IDatabase {
-  getAll: (table: string) => Array<object>;
-  getById: (id: string|number, table: string) => object;
+  getAll: (table: string) => IContent[];
+  getById: (id: string|number, table: string) => IContent;
 }
 
 export default IDatabase;

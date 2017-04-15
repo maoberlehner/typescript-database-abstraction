@@ -3,6 +3,8 @@ import * as sinon from 'sinon';
 
 import { Database } from './Database';
 
+import { IContent } from '../interfaces/IContent';
+
 test('should be a function', (t) => {
   t.is(typeof Database, 'function');
 });
@@ -10,7 +12,7 @@ test('should be a function', (t) => {
 test('should call the drivers getAll method', (t) => {
   const MockDriver = {
     getAll: sinon.spy(),
-    getById: () => ({}),
+    getById: () => ({} as IContent),
   };
   const db = new Database(MockDriver);
   db.getAll(`some-table`);

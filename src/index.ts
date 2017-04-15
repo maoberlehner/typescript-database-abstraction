@@ -3,7 +3,7 @@ import * as path from 'path';
 import databaseFactory from './classes/Database';
 import fileDriverFactory from './classes/FileDriver';
 import markdownExtractorFactory from './classes/MarkdownExtractor';
-import articleFactory from './models/Article';
+import articleFactory from './models/ArticleModel';
 
 const cwd = path.resolve(__dirname, `../`);
 

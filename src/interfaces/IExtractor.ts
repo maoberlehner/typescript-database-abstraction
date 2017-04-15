@@ -1,3 +1,5 @@
+import { IContent } from '../interfaces/IContent';
+
 export interface IExtractor {
-  extractData: () => object;
+  extractData: () => IContent;
 }

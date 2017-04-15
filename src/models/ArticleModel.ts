@@ -1,7 +1,12 @@
+import { IContent } from '../interfaces/IContent';
 import IDatabase from '../interfaces/IDatabase';
 import IModel from '../interfaces/IModel';
 
-export class Article implements IModel {
+export interface IArticle extends IContent {
+  description?: string;
+}
+
+export class ArticleModel implements IModel {
   public table = `articles`;
   private db: IDatabase;
 
@@ -9,15 +14,15 @@ export class Article implements IModel {
     this.db = db;
   }
 
-  public getAll() {
+  public getAll(): IArticle[] {
     return this.db.getAll(this.table);
   }
 
-  public getById(id: string|number) {
+  public getById(id: string|number): IArticle {
     return this.db.getById(id, this.table);
   }
 }
 
 export default function articleFactory(db: IDatabase) {
-  return new Article(db);
+  return new ArticleModel(db);
 }
